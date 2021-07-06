@@ -4,15 +4,11 @@ nav {
 #journey {
   color: #1E90FF;
 }
-
+#myhtml5 {
+  color: #000000;
+  text-shadow: -1px 0 blue, 0 1px yellow, 1px 0 red, 0 -1px green;
+}
 
 footer {
-  color: #FAF0E6;
-  width: 300px;
-  border: 15px solid green;
-  padding: 50px;
-  margin: 20px;width: 300px;
-  border: 15px solid green;
-  padding: 50px;
-  margin: 20px;
+  color: #ee7903;
 }
