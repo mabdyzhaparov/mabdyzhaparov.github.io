@@ -1,10 +1,18 @@
 nav {
   color: #FF8C00;
 }
+#journey {
+  color: #1E90FF;
+}
+
 
 footer {
   color: #FAF0E6;
-}
-#journey {
-  color: #1E90FF;
+  width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
 }
