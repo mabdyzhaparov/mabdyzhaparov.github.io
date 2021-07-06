@@ -1,7 +1,10 @@
-body {
+nav {
   color: blue;
 }
 
-h1 {
+footer {
   color: green;
+}
+#journey {
+  color: red;
 }
