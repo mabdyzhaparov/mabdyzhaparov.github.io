@@ -2,11 +2,29 @@ nav {
   color: #FF8C00;
 }
 #journey {
+  font-family:  Helvetica, sans-serif;
+  font-size: 100px;
   color: #1E90FF;
 }
 #myhtml5 {
+  font-family:  Helvetica, sans-serif;
+  font-size: 100px;
   color: #000000;
-  text-shadow: -1px 0 blue, 0 1px yellow, 1px 0 red, 0 -1px green;
+  text-shadow: 3px 0 white, 0 0px yellow, 4px 0 #2583d0, 0 4px #2583d0;
+}
+
+#myjavascript {
+  font-family:  Helvetica, sans-serif;
+  font-size: 100px;
+  color: #f1b520;
+  text-shadow: 3px 0 #966b00, 0 4px #966b00;
+}
+
+#mycss3 {
+  font-family:  Helvetica, sans-serif;
+  font-size: 100px;
+  color: #2096f1;
+  text-shadow: 3px 0 #ffffff, 0 4px #b1cce1;
 }
 
 footer {
