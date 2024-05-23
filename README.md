@@ -1,2 +1,2 @@
 # mabdyzhaparov.github.io
-Just a test website.
+Testing git push
