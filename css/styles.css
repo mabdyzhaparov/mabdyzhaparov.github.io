@@ -1,0 +1,633 @@
+/* ==========================================================================
+   Custom properties / theme
+   ========================================================================== */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f4f6f8;
+  --color-surface: #ffffff;
+  --color-border: #e1e5ea;
+  --color-text: #1b2027;
+  --color-text-muted: #545c66;
+  --color-accent: #1f5f8b;
+  --color-accent-dark: #163f5c;
+  --color-accent-contrast: #ffffff;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+
+  --max-width: 1080px;
+  --radius: 10px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 32, 0.06);
+  --shadow-md: 0 4px 16px rgba(16, 24, 32, 0.08);
+
+  --transition-fast: 150ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #12161b;
+    --color-bg-alt: #171c22;
+    --color-surface: #1b2129;
+    --color-border: #2a323c;
+    --color-text: #eaedf0;
+    --color-text-muted: #a7b0ba;
+    --color-accent: #5ba3d0;
+    --color-accent-dark: #7fbde3;
+    --color-accent-contrast: #0e141a;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* ==========================================================================
+   Reset / base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw + 1rem, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+p {
+  margin: 0 0 var(--space-2);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ==========================================================================
+   Accessibility helpers
+   ========================================================================== */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-2);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  z-index: 1000;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Layout helpers
+   ========================================================================== */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-3);
+}
+
+.section {
+  padding-block: var(--space-5);
+}
+
+.section-alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section-lead {
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin-bottom: var(--space-4);
+}
+
+.section-body {
+  max-width: 70ch;
+}
+
+/* ==========================================================================
+   Header / navigation
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-2);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.brand:hover {
+  color: var(--color-text);
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.brand-name {
+  font-size: 1rem;
+}
+
+.primary-nav ul {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.primary-nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.35rem 0.1rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.primary-nav a:hover,
+.primary-nav a:focus-visible {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+.nav-toggle-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 24px;
+}
+
+.nav-toggle-line {
+  display: block;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  padding-block: var(--space-5);
+}
+
+.hero-inner {
+  max-width: 70ch;
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  max-width: 55ch;
+}
+
+.hero-cert {
+  margin-block: var(--space-2) var(--space-3);
+}
+
+.badge {
+  display: inline-block;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast), transform var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.button-primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.button-primary:hover {
+  background-color: var(--color-accent-dark);
+  color: var(--color-accent-contrast);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.button-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Skills
+   ========================================================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-3);
+}
+
+.skill-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.tag-list li {
+  display: inline-block;
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.9rem;
+  margin: 0.2rem 0.35rem 0.2rem 0;
+}
+
+.section-alt .tag-list li {
+  background-color: var(--color-surface);
+}
+
+/* ==========================================================================
+   Approach
+   ========================================================================== */
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-3);
+}
+
+.approach-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.approach-card p {
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Projects
+   ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+
+.project-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.placeholder-tag {
+  align-self: flex-start;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text-muted);
+  border: 1px dashed var(--color-border);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+
+.project-card p {
+  color: var(--color-text-muted);
+  flex-grow: 1;
+}
+
+.tag-list-inline {
+  margin-bottom: var(--space-2);
+}
+
+.project-link {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Certifications
+   ========================================================================== */
+.cert-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-sm);
+}
+
+.cert-card-main h3 {
+  margin-bottom: 0.25rem;
+}
+
+.cert-card-main p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.cert-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.cert-meta dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.cert-meta dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+.contact-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem var(--space-2);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact-list li:last-child {
+  border-bottom: none;
+}
+
+.contact-list a {
+  overflow-wrap: anywhere;
+}
+
+.contact-label {
+  flex: 0 0 6rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.contact-placeholder {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-3);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.to-top {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Responsive: mobile navigation
+   ========================================================================== */
+@media (max-width: 480px) {
+  .skills-grid,
+  .approach-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .primary-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-fast);
+  }
+
+  .primary-nav.is-open {
+    max-height: 320px;
+  }
+
+  .primary-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .primary-nav li {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .primary-nav li:last-child {
+    border-bottom: none;
+  }
+
+  .primary-nav a {
+    display: block;
+    padding: var(--space-2) 0;
+  }
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
